@@ -1,0 +1,11 @@
+[project]
+name = "api"
+version = "0.1.0"
+description = "FastAPI sleep/health API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "httpx>=0.28.0",
+    "uvicorn[standard]>=0.32.0",
+]
