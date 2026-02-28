@@ -1,6 +1,12 @@
 # Summary
 
-This repo is intended as a starting point to get a FastAPI server up and running using uv and Docker (modern standards) on a unix box. Once up and running, the host system will have an endpoint(s) available mirroring your FastAPI setup. When requesting from within the host, it should be reachable at 0.0.0.0:<port> or localhost:<port>. To hit the endpoint(s) from outside the host, be sure to have appropriate networking and ports open so that traffic can reach the service. The setup assumes that all traffic stays in a private network (otherwise we should consider more about https).
+This repo is intended as a starting point to get a FastAPI server up and running using uv and Docker (modern standards) on a unix box.
+
+Once up and running, the host system will have an endpoint(s) available mirroring your FastAPI setup. When requesting from within the host, it should be reachable at 0.0.0.0:<port> or localhost:<port>.
+
+To hit the endpoint(s) from outside the host, be sure to have appropriate networking and ports open so that traffic can reach the service. The setup assumes that all traffic stays in a private network (otherwise we should consider more about https).
+
+Without further config, the endpoint would then be reachable at, e.g., 172.XXX.XXX.XXX:8000 or 172.XXX.XXX.XXX (port 80 setup). If running on the cloud, be weary that a host stop-start may reassign the internal IP address (AWS EC2 does this). Either a static IP should be set or infrastructure like a load balancer offer a good way to act as an intermediary stable URL target for clients to reference.
 
 
 # Files at a glance
