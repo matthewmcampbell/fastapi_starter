@@ -1,3 +1,8 @@
+# Summary
+
+This repo is intended as a starting point to get a FastAPI server up and running using uv and Docker (modern standards) on a unix box. Once up and running, the host system will have an endpoint(s) available mirroring your FastAPI setup. When requesting from within the host, it should be reachable at 0.0.0.0:<port> or localhost:<port>. To hit the endpoint(s) from outside the host, be sure to have appropriate networking and ports open so that traffic can reach the service. The setup assumes that all traffic stays in a private network (otherwise we should consider more about https).
+
+
 # Files at a glance
 
 - `main.py` — FastAPI application entrypoint, defines all endpoints and startup logic
@@ -53,7 +58,7 @@ docker run -p 8000:8000 api
 
 If the above commands worked, you should see your FastAPI booted in a process. Keep this terminal alive, and in a new terminal, try both of the ./scripts/*.sh files to ensure endpoints are working.
 
-Once you are confident that the api is reachable and working, then the below command setup starts as a background process and configure basic logs/restarts. Use `-p 8000:8000` for external access at `http://<host>:8000`; use `-p 80:8000` if you want the app on the host’s port 80 (ensure nothing else is bound to 80).
+Once you are confident that the api is reachable and working, then the below command setup starts as a background process and configure basic logs/restarts. Use `-p 8000:8000` for external access at `http://<host>:8000`; use `-p 80:8000` if you want the app on the host’s port 80 (ensure nothing else is bound to 80). Setting to port 80 might require additional permissions to be set/overwritten.
 
 ```bash
 docker run -d --restart unless-stopped -p 8000:8000 --log-opt max-size=10m --log-opt max-file=3 api
